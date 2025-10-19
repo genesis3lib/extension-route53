@@ -1,0 +1,28 @@
+{
+  "version": "3.0.0",
+
+  "metadata": {
+    "id": "extension-route53",
+    "name": "AWS Route53 DNS & SSL",
+    "kind": "extension",
+    "layers": ["cicd"],
+    "type": "route53",
+    "description": "AWS Route53 DNS management and ACM SSL certificate automation workflows",
+    "version": "1.0.0",
+    "author": "Genesis Team",
+    "tags": ["route53", "dns", "ssl", "acm", "aws", "github-actions"],
+    "compatibleWith": ["aws"],
+    "requires": ["github"]
+  },
+
+  "scaffoldConfigTemplate": [],
+
+  "generation": {
+    "files": {
+      "remove": []
+    },
+    "layers": {
+      "cicd": {}
+    }
+  }
+}
