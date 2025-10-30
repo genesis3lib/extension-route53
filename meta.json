@@ -5,7 +5,7 @@
     "id": "extension-route53",
     "name": "AWS Route53 DNS & SSL",
     "kind": "extension",
-    "layers": ["cicd"],
+    "layers": ["ops", "cicd"],
     "type": "route53",
     "description": "AWS Route53 DNS management and ACM SSL certificate automation workflows",
     "version": "1.0.0",
