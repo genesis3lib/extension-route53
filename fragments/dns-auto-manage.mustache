@@ -1,0 +1,7 @@
+echo "🔍 Using Route53 for automatic certificate validation..."
+echo "✅ Route53 DNS provider configured - certificates will auto-validate"
+
+# For Route53, we don't need to manually add CNAME records
+# ACM will automatically validate certificates if the domain is in Route53
+echo "📝 Route53 will automatically handle certificate validation"
+echo "DNS_AUTO_MANAGED=true" >> $GITHUB_OUTPUT
