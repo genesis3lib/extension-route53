@@ -567,7 +567,7 @@ jobs:
           echo "2. Or use Route 53 to create an alias record"
           echo ""
           echo "🧪 Test your HTTPS endpoint:"
-          echo "curl -k https://$ALB_DNS/app/v1/health"
+          echo "curl -k https://$ALB_DNS/app/v1/public/health"
 
       - name: Update Route53 DNS for ALB
         run: |
@@ -679,8 +679,8 @@ jobs:
           echo "  HTTPS: https://$API_DOMAIN"
           echo ""
           echo "🌐 Test it with the health endpoint:"
-          echo "  HTTP: http://$API_DOMAIN/app/v1/health (redirects to HTTPS)"
-          echo "  HTTPS: https://$API_DOMAIN/app/v1/health"
+          echo "  HTTP: http://$API_DOMAIN/app/v1/public/health (redirects to HTTPS)"
+          echo "  HTTPS: https://$API_DOMAIN/app/v1/public/health"
           echo "⏳ DNS propagation may take a few minutes"
 
           # Cleanup temp file
