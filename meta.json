@@ -15,10 +15,12 @@
     "requires": ["github"],
     "providesFragments": {
       "dns-provider-message": {
-        "mode": "conflict"
+        "mode": "conflict",
+        "notes": "Provides AWS Route53-specific DNS setup instructions in deployment documentation"
       },
       "dns-auto-manage": {
-        "mode": "conflict"
+        "mode": "conflict",
+        "notes": "Enables automated DNS record management via Route53 API in CI/CD workflows"
       }
     }
   },
