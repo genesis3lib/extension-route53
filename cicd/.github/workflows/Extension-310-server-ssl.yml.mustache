@@ -48,7 +48,7 @@ jobs:
 
       - name: Get Terraform Outputs
         run: |
-          cd ops-{{opsModule.moduleId}}/terraform
+          cd {{opsModule.moduleId}}/terraform
           echo "DEBUG: Getting Terraform outputs for {{{githubVarsOpen}}} env.ENVIRONMENT {{{githubVarsClose}}} environment..."
 
           # Initialize Terraform to access state
