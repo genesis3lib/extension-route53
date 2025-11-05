@@ -73,14 +73,13 @@ jobs:
           echo "🌐 Configuring ALB SSL for {{projectName}} {{{githubVarsOpen}}} env.ENVIRONMENT {{{githubVarsClose}}}..."
 
           PROJECT_NAME="{{projectName}}"
-          BACKEND_MODULE_ID="{{backendModule.moduleId}}"
           ENVIRONMENT="{{{githubVarsOpen}}} env.ENVIRONMENT {{{githubVarsClose}}}"
 
-          # Domain construction with environment-specific prefix using backend module ID
+          # Domain construction with environment-specific prefix
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
-            API_DOMAIN="${BACKEND_MODULE_ID}-api.{{sld}}.{{tld}}"
+            API_DOMAIN="{{projectName}}-api.{{sld}}.{{tld}}"
           else
-            API_DOMAIN="${BACKEND_MODULE_ID}-${ENVIRONMENT}-api.{{sld}}.{{tld}}"
+            API_DOMAIN="{{projectName}}-${ENVIRONMENT}-api.{{sld}}.{{tld}}"
           fi
           ALB_DNS="{{{githubVarsOpen}}} env.ALB_DNS {{{githubVarsClose}}}"
 
@@ -584,12 +583,11 @@ jobs:
 
           echo "✅ ALB DNS: $ALB_DNS"
 
-          # Domain construction with environment-specific prefix using backend module ID
-          BACKEND_MODULE_ID="{{backendModule.moduleId}}"
+          # Domain construction with environment-specific prefix
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
-            API_DOMAIN="${BACKEND_MODULE_ID}-api.{{sld}}.{{tld}}"
+            API_DOMAIN="{{projectName}}-api.{{sld}}.{{tld}}"
           else
-            API_DOMAIN="${BACKEND_MODULE_ID}-${ENVIRONMENT}-api.{{sld}}.{{tld}}"
+            API_DOMAIN="{{projectName}}-${ENVIRONMENT}-api.{{sld}}.{{tld}}"
           fi
           DOMAIN_BASE="{{sld}}.{{tld}}"
 

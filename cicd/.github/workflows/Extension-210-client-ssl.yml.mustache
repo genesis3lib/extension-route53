@@ -45,14 +45,13 @@ jobs:
           echo "🌐 Configuring CloudFront alternate domain for {{projectName}} {{{githubVarsOpen}}} env.ENVIRONMENT {{{githubVarsClose}}}..."
 
           PROJECT_NAME="{{projectName}}"
-          FRONTEND_MODULE_ID="{{frontendModule.moduleId}}"
           ENVIRONMENT="{{{githubVarsOpen}}} env.ENVIRONMENT {{{githubVarsClose}}}"
 
-          # Domain construction with environment-specific prefix using frontend module ID
+          # Domain construction with environment-specific prefix
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
-            UI_DOMAIN="${FRONTEND_MODULE_ID}-ui.{{sld}}.{{tld}}"
+            UI_DOMAIN="{{projectName}}-ui.{{sld}}.{{tld}}"
           else
-            UI_DOMAIN="${FRONTEND_MODULE_ID}-${ENVIRONMENT}-ui.{{sld}}.{{tld}}"
+            UI_DOMAIN="{{projectName}}-${ENVIRONMENT}-ui.{{sld}}.{{tld}}"
           fi
 
           echo "📋 Configuration:"
@@ -551,12 +550,11 @@ jobs:
 
           echo "✅ CloudFront domain: $CLOUDFRONT_DOMAIN"
 
-          # Domain construction with environment-specific prefix using frontend module ID
-          FRONTEND_MODULE_ID="{{frontendModule.moduleId}}"
+          # Domain construction with environment-specific prefix
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
-            UI_DOMAIN="${FRONTEND_MODULE_ID}-ui.{{sld}}.{{tld}}"
+            UI_DOMAIN="{{projectName}}-ui.{{sld}}.{{tld}}"
           else
-            UI_DOMAIN="${FRONTEND_MODULE_ID}-${ENVIRONMENT}-ui.{{sld}}.{{tld}}"
+            UI_DOMAIN="{{projectName}}-${ENVIRONMENT}-ui.{{sld}}.{{tld}}"
           fi
           DOMAIN_BASE="{{sld}}.{{tld}}"
 
