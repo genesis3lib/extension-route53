@@ -27,6 +27,8 @@
 
   "scaffoldConfigTemplate": [],
 
+  "dependencies": {},
+
   "generation": {
     "files": {
       "remove": []
@@ -34,5 +36,19 @@
     "layers": {
       "cicd": {}
     }
-  }
+  },
+  "runtimeConfigTemplate": [
+    {
+      "key": "ROUTE53_HOSTED_ZONE_ID",
+      "description": "Route53 Hosted Zone ID for your domain (found in Route53 console)",
+      "example": "Z1234567890ABC",
+      "required": false,
+      "secret": false,
+      "targets": [
+        "ops"
+      ],
+      "commonForAllEnv": true
+    }
+  ],
+  "gitignore": []
 }
