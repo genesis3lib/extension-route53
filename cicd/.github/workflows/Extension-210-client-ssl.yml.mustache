@@ -48,6 +48,7 @@ jobs:
           ENVIRONMENT="{{{githubVarsOpen}}} env.ENVIRONMENT {{{githubVarsClose}}}"
 
           # Domain construction with environment-specific prefix
+          APEX_DOMAIN="{{sld}}.{{tld}}"
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
             UI_DOMAIN="{{projectName}}-ui.{{sld}}.{{tld}}"
           else
@@ -57,6 +58,7 @@ jobs:
           echo "📋 Configuration:"
           echo "  Project: $PROJECT_NAME"
           echo "  Environment: $ENVIRONMENT"
+          echo "  Apex Domain: $APEX_DOMAIN"
           echo "  UI Domain: $UI_DOMAIN"
 
           # Find the CloudFront distribution
@@ -467,11 +469,11 @@ jobs:
           ETAG=$(jq -r '.ETag' /tmp/dist-config.json)
           echo "Current ETag: $ETAG"
 
-          # Update distribution config to add alternate domain
-          echo "📝 Adding alternate domain to distribution..."
-          jq --arg domain "$UI_DOMAIN" --arg cert_arn "$CERT_ARN" '
-            .DistributionConfig.Aliases.Quantity = (.DistributionConfig.Aliases.Quantity + 1) |
-            .DistributionConfig.Aliases.Items += [$domain] |
+          # Update distribution config to add alternate domains (apex + UI subdomain)
+          echo "📝 Adding alternate domains to distribution..."
+          jq --arg apex_domain "$APEX_DOMAIN" --arg ui_domain "$UI_DOMAIN" --arg cert_arn "$CERT_ARN" '
+            .DistributionConfig.Aliases.Quantity = (.DistributionConfig.Aliases.Quantity + 2) |
+            .DistributionConfig.Aliases.Items += [$apex_domain, $ui_domain] |
             .DistributionConfig.ViewerCertificate.CloudFrontDefaultCertificate = false |
             .DistributionConfig.ViewerCertificate.ACMCertificateArn = $cert_arn |
             .DistributionConfig.ViewerCertificate.SSLSupportMethod = "sni-only" |
