@@ -12,6 +12,7 @@
     "author": "Genesis Team",
     "affiliateUrl": "https://console.aws.amazon.com/route53/v2/hostedzones",
     "tags": ["route53", "dns", "ssl", "acm", "aws", "github-actions"],
+    "providers": ["aws"],
     "compatibleWith": ["aws"],
     "requires": ["github"],
     "providesFragments": {
