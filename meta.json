@@ -1,20 +1,34 @@
 {
   "version": "3.0.0",
-
   "metadata": {
     "id": "extension-route53",
     "name": "AWS Route53 DNS & SSL",
     "kind": "extension",
-    "layers": ["cicd"],
+    "layers": [
+      "cicd"
+    ],
     "type": "route53",
     "description": "AWS Route53 DNS management and ACM SSL certificate automation workflows",
     "version": "1.0.0",
     "author": "Genesis Team",
     "affiliateUrl": "https://console.aws.amazon.com/route53/v2/hostedzones",
-    "tags": ["route53", "dns", "ssl", "acm", "aws", "github-actions"],
-    "providers": ["aws"],
-    "compatibleWith": ["aws"],
-    "requires": ["github"],
+    "tags": [
+      "route53",
+      "dns",
+      "ssl",
+      "acm",
+      "aws",
+      "github-actions"
+    ],
+    "providers": [
+      "aws"
+    ],
+    "compatibleWith": [
+      "aws"
+    ],
+    "requires": [
+      "github"
+    ],
     "providesFragments": {
       "dns-provider-message": {
         "mode": "conflict",
@@ -24,13 +38,13 @@
         "mode": "conflict",
         "notes": "Enables automated DNS record management via Route53 API in CI/CD workflows"
       }
+    },
+    "onConflict": {
+      "message": "Choose only one DNS provider"
     }
   },
-
   "scaffoldConfigTemplate": [],
-
   "dependencies": {},
-
   "generation": {
     "files": {
       "remove": []
