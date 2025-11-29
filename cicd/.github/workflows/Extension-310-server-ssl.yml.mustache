@@ -84,7 +84,7 @@ jobs:
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
             API_DOMAIN="{{projectName}}-api.{{sld}}.{{tld}}"
           else
-            API_DOMAIN="{{projectName}}-${ENVIRONMENT}-api.{{sld}}.{{tld}}"
+            API_DOMAIN="{{projectName}}-api-${ENVIRONMENT}.{{sld}}.{{tld}}"
           fi
           ALB_DNS="{{{githubVarsOpen}}} env.ALB_DNS {{{githubVarsClose}}}"
 
@@ -592,7 +592,7 @@ jobs:
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
             API_DOMAIN="{{projectName}}-api.{{sld}}.{{tld}}"
           else
-            API_DOMAIN="{{projectName}}-${ENVIRONMENT}-api.{{sld}}.{{tld}}"
+            API_DOMAIN="{{projectName}}-api-${ENVIRONMENT}.{{sld}}.{{tld}}"
           fi
           DOMAIN_BASE="{{sld}}.{{tld}}"
 

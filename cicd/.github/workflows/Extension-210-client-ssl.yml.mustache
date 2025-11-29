@@ -52,7 +52,7 @@ jobs:
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
             UI_DOMAIN="{{projectName}}-ui.{{sld}}.{{tld}}"
           else
-            UI_DOMAIN="{{projectName}}-${ENVIRONMENT}-ui.{{sld}}.{{tld}}"
+            UI_DOMAIN="{{projectName}}-ui-${ENVIRONMENT}.{{sld}}.{{tld}}"
           fi
 
           echo "📋 Configuration:"
@@ -556,7 +556,7 @@ jobs:
           if [ "${ENVIRONMENT}" = "prod" ] || [ "${ENVIRONMENT}" = "production" ]; then
             UI_DOMAIN="{{projectName}}-ui.{{sld}}.{{tld}}"
           else
-            UI_DOMAIN="{{projectName}}-${ENVIRONMENT}-ui.{{sld}}.{{tld}}"
+            UI_DOMAIN="{{projectName}}-ui-${ENVIRONMENT}.{{sld}}.{{tld}}"
           fi
           DOMAIN_BASE="{{sld}}.{{tld}}"
 
